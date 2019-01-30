@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<style>
+    .p::-webkit-input-placeholder {
+			transform: translateY(-5px);
+			font-size: 11px;
+			transition: 1s ease;
+    color: red;
+
+}
+.r::-webkit-input-placeholder{
+transform: translateY(0px);
+			font-size: 13px;
+			transition: 1s ease;
+    color: red;
+pointer-events: none;
+
+
+}
+
+.UserName{
+	position: absolute;
+	top: 5px;
+	transition: 1s ease;
+}
+
+.UserNameR{
+	transform: translateY(-3px);
+	font-size: 12px;
+	color: red;
+	transition: 1s ease;
+}
+
+	</style>
+
+<body>
+    <input style="display: block;margin-top: 50px;outline: none;transition: 1s;" type="text" placeholder="Enter Name Here" id="in">
+    <div style="width: 130px;margin: 50px;position: relative;">
+        <span class="UserName">Enter UserName</span>
+        <input type="text" id="dummy" style="outline: none;padding: 10px 0px 0px 0px">
+    </div>
+    <span id="check"><i class="fa fa-check"></i></span>
+    <span id="close"><i class="fa fa-close"></i></span>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function() {
+
+        $("#dummy").on('focusin', function() {
+            $(".UserName").addClass('UserNameR');
+        });
+        $("#dummy").on('focusout', function() {
+            if ($("#dummy").val() == "") {
+                $(".UserName").removeClass('UserNameR');
+            }
+        });
+
+        $("#check").hide();
+        $("#close").hide();
+
+
+
+
+
+
+
+        $("#in").on('focusin', function() {
+            $("#in").addClass('p');
+            $("#in").removeClass('r');
+
+        });
+        $("#in").on('focusout', function() {
+            $("#in").removeClass('p');
+            $("#in").addClass('r');
+
+        });
+
+        $("#in").on('keyup', function(event) {
+            let code = event.keyCode;
+            var upperCase = new RegExp('[A-Z]');
+            var lowerCase = new RegExp('[a-z]');
+            var numbers = new RegExp('[0-9]');
+
+            if ($("#in").val().match(upperCase)) {
+                alert('upperCase');
+            } else if ($("#in").val().match(lowerCase)) {
+                alert('lowerCase');
+            } else if ($("#in").val().match(numbers)) {
+                alert('numbers');
+
+            }
+            let val = $("#in").val();
+            if (val.length < 7) {
+                alert('atleast 7 charectors');
+            }
+        });
+
+
+
+
+
+    });
+    </script>
+</body>
+
+</html>
